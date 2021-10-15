@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>window coordinate</title>
+    <style>
+      body {
+        background: #000;
+      }
+      div {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 5px;
+        border-radius: 5px;
+        background: coral;
+      }
+      .special-div {
+        background: cornflowerblue;
+      }
+      .btn-wrapper {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+      }
+      p {
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <div></div>
+    <div class="special-div"></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <nav class="btn-wrapper">
+      <button class="btn1">Scroll by 100px(y)</button>
+      <button class="btn2">Scroll to 100px(y)</button>
+      <button class="btn3">Scroll into special!</button>
+    </nav>
+    <p>
+      clientX, Y는 페이지 내에서 스크롤 여부와 상관없이 document가 가장 상단에서
+      해당 element까지의 X값과 Y값을 계산하고<br />
+      pageX, Y는 스크롤 여부를 따져서 페이지의 맨 상단에서 해당 element까지의
+      X값과 Y값을 계산한다>
+    </p>
+    <script>
+      const box = document.querySelector(".special-div");
+      const firstBtn = document.querySelector(".btn1");
+      const secondBtn = document.querySelector(".btn2");
+      const lastBtn = document.querySelector(".btn3");
+
+      box.addEventListener("click", (event) => {
+        const rect = box.getBoundingClientRect();
+        console.log(rect);
+        console.log(`client: ${event.clientX}, ${event.clientY}`);
+        console.log(`page: ${event.pageX}, ${event.pageY}`);
+      });
+
+      firstBtn.addEventListener("click", () => {
+        window.scrollBy(0, 100);
+        // 또는 객체 형태로 작성 가능하다. window.scrollBy({top: 100, left: 0, behavior: 'smooth'});
+      });
+
+      secondBtn.addEventListener("click", () => {
+        window.scrollTo(0, 100);
+      });
+
+      lastBtn.addEventListener("click", () => {
+        box.scrollIntoView();
+      });
+    </script>
+  </body>
+</html>

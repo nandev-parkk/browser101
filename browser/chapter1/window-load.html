@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>window load</title>
+    <script src="test.js" defer></script>
+  </head>
+  <body>
+    <!-- 
+      1. html 다운로드
+      2. 이미지, 폰트 등 필요 리소스 다운로드
+      3. js 다운로드
+
+      head에 defer 옵션과 함께 넣은 script가 가장 먼저 실행되고
+      두번째로 DOMContentLoaded,
+      세번째로 load가 실행된다.
+    -->
+
+    <script>
+      // only document, html 파일만 다운로드 되면 출력
+      window.addEventListener("DOMContentLoaded", () => {
+        console.log("DOMContentLoaded");
+      });
+
+      // after resources (css, images), html과 리소스까지 다운로드 되면 출력
+      window.addEventListener("load", () => {
+        console.log("load");
+      });
+
+      // before unload, 사용자가 페이지를 나간다던지 하는 등 unload 되기 전에 출력
+      window.addEventListener("beforeunload", () => {
+        console.log("beforeunload");
+      });
+
+      // resource is being unloaded, 페이지가 끝날 때, 리소스같은 것들이 unloaded 되었을 때 출력
+      window.addEventListener("unload", () => {
+        console.log("unload");
+      });
+    </script>
+  </body>
+</html>

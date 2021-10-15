@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>window size</title>
+    <style>
+      .wrapper {
+        display: inline-block;
+        font-size: 40px;
+        padding: 40px;
+        margin-bottom: 20px;
+        background: chocolate;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper"></div>
+    <div class="description">
+      window.screen은 모니터 크기를 의미<br />
+      window.outer는 브라우저 전체 크기를 의미<br />
+      window.inner는 브라우저에 만약 수직 스크롤바가 있다면 스크롤바를 포함한
+      페이지가 표시되는 부분의 크기를 의미<br />
+      documentElement.client는 documnet는 문서 자체를 의미하며, 브라우저에 만약
+      수직 스크롤바가 있다면 스크롤바를 제외한 페이지가 표시되는 부분의 크기를
+      의미
+    </div>
+    <script>
+      const wrapper = document.querySelector(".wrapper");
+
+      function updateTag() {
+        wrapper.innerHTML = `
+        window.screen: ${window.screen.width}, ${window.screen.height} <br>
+        window.outer: ${window.outerWidth}, ${window.outerHeight} <br>
+        window.inner: ${window.innerWidth}, ${window.innerHeight} <br>
+        documentElement.clientWidth: ${document.documentElement.clientWidth}, ${document.documentElement.clientHeight}
+        `;
+      }
+
+      window.addEventListener("resize", () => {
+        updateTag();
+      });
+
+      updateTag();
+    </script>
+  </body>
+</html>
