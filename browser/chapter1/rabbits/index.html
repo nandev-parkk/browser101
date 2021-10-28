@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll</title>
+    <style>
+      body {
+        background: #000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      button {
+        background: coral;
+        color: #fff;
+        outline: none;
+        border: none;
+        font-size: 20px;
+        margin: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="button">Find a rabbit 🐇</button>
+    <img src="/img/carrot.png" alt="당근" />
+    <img src="/img/carrot.png" alt="당근" />
+    <img src="/img/carrot.png" alt="당근" />
+    <img src="/img/carrot.png" alt="당근" />
+    <img src="/img/carrot.png" alt="당근" />
+    <img src="/img/carrot.png" alt="당근" />
+    <img src="/img/carrot.png" alt="당근" />
+    <img src="/img/carrot.png" alt="당근" />
+    <img src="/img/rabbit.png" alt="토끼" class="rabbit" />
+    <img src="/img/carrot.png" alt="당근" />
+    <img src="/img/carrot.png" alt="당근" />
+    <img src="/img/carrot.png" alt="당근" />
+    <img src="/img/carrot.png" alt="당근" />
+    <img src="/img/carrot.png" alt="당근" />
+
+    <script>
+      const rabbit = document.querySelector(".rabbit");
+      const button = document.querySelector(".button");
+      console.log(rabbit);
+      button.addEventListener("click", () => {
+        rabbit.scrollIntoView({ behavior: "smooth", block: "center" });
+      });
+    </script>
+  </body>
+</html>
